@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration 
+	PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+           "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<context id="MySqlTables" targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<property name="ignoreQualifiersAtRuntime" value="true"></property>
+
+
+		<!--<plugin type="com.usky.platform.utility.mybatis.generator.plugin.SwaggerAnnotationPlugin" />-->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+
+		<!-- DB -->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+						connectionURL="jdbc:mysql://120.55.43.95:3306/test?useSSL=false"
+						userId="luckyair"
+						password="luckyair">
+			<property name="remarksReporting" value="true" />
+		</jdbcConnection>
+		<!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" -->
+		<!-- connectionURL="jdbc:oracle:thin:@192.168.45.11:1521:psstestdb" userId="PSSB2B" -->
+		<!-- password="pssB24test"> -->
+		<!-- <property name="remarksReporting" value="true"/> -->
+		<!-- </jdbcConnection> -->
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<!-- model -->
+		<javaModelGenerator targetPackage="houzm.ssm.tx.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+
+		<!-- dao --> <!--生成SQLMAP文件 -->
+		<sqlMapGenerator targetPackage="houzm.ssm.tx.sql" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="houzm.ssm.tx.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+		<!-- 支付 -->
+		<table tableName="T_USER" schema="TEST">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+			<property name="suffixSupport" value="false" />
+			<property name="preffixSupport" value="false" />
+		</table>
+	</context>
+</generatorConfiguration>
